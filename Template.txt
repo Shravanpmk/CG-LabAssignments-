@@ -1,0 +1,33 @@
+#include <windows.h>
+#include <GL/glut.h>
+
+void init2D(float r, float g, float b){
+	glClearColor(r,g,b,0.0); // set the bg color
+	glMatrixMode (GL_PROJECTION); // set the viewing mode
+	gluOrtho2D (0.0, 200.0, 0.0, 150.0); // set the projection plane with xmin,xmax,ymin,ymax
+}
+
+void display(void){
+	glClear(GL_COLOR_BUFFER_BIT); // clears the color buffer
+	glColor3f(1.0, 0.0, 0.0); // set the pen color
+	//draw two points
+ 	glBegin(GL_POINTS); // drawing block
+ 	glVertex2i(10,10); // specifies a vertex in integer scale
+	 glVertex2i(100,100);
+ 	glEnd();
+ 	glFlush(); // moves the drawing from buffer to window
+}
+
+
+int main(int argc, char *argv[]){
+
+	glutInit(&argc,argv); // Initializes GLUT
+ 	glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB); // Initializes display mode - GLUT_DOUBLE, GLUT_RGBA, GLUT_DEPTH
+ 	glutInitWindowSize (500, 500); // Window size - in terms of no. of pixels
+ 	glutInitWindowPosition (100, 100); // Initial window position in screen
+ 	glutCreateWindow ("points and lines"); // Create a window with the specified title
+ 	init2D(1.0,1.0,1.0); // Call the initialization function with bg color
+ 	glutDisplayFunc(display); // register the event callback function for display / redisplay
+ 	glutMainLoop(); // Loops the display infinitely
+ 	return 0;
+}

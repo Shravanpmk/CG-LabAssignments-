@@ -1,0 +1,3 @@
+Create a line drawing algorithm !
+2 points given by user 
+use DDA and presanam's algo
